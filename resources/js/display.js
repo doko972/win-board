@@ -258,7 +258,7 @@ const echo = new Echo({
 
 // ── Rafraîchissement de l'iframe Google Calendar ──────────
 function refreshCalendar() {
-    const iframe = document.querySelector('.display__right iframe');
+    const iframe = document.querySelector('.display__center iframe');
     if (!iframe) return;
     const src = iframe.src;
     iframe.src = '';
