@@ -1,0 +1,51 @@
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 24px;
+}
+
+.badge-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-mid;
+    border: 1px solid $border-mid;
+    border-radius: $radius-xl;
+    padding: 10px 16px;
+    transition: border-color $transition;
+
+    &:hover { border-color: rgba($brand, 0.35); }
+
+    &__icon { font-size: 1.5rem; }
+
+    &__name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: $text-white;
+    }
+
+    &__date {
+        font-size: 0.6875rem;
+        color: $text-500;
+        margin-top: 2px;
+    }
+}
+
+// Alert succès
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: $radius-lg;
+    font-weight: 600;
+
+    &--success {
+        background: rgba($emerald, 0.08);
+        border: 1px solid rgba($emerald, 0.25);
+        color: lighten($emerald, 10%);
+    }
+
+    &__icon { font-size: 1.25rem; }
+}

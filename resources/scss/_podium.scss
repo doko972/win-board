@@ -1,0 +1,100 @@
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 8px 0;
+
+    &__slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        flex: 1;
+        max-width: 70px;
+    }
+
+    &__crown {
+        font-size: 0.5rem;
+        font-weight: 700;
+        color: $gold;
+        animation: pulse 2s infinite;
+        min-height: 10px;
+    }
+
+    &__avatar {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.5rem;
+        font-weight: 900;
+        color: $text-white;
+        border: 1px solid;
+        flex-shrink: 0;
+
+        &--1 {
+            width: 24px; height: 24px; font-size: 0.5625rem;
+            background: linear-gradient(135deg, $gold, darken($gold, 15%));
+            border-color: $gold;
+            box-shadow: 0 0 8px rgba($gold, 0.3);
+        }
+        &--2 {
+            background: linear-gradient(135deg, $silver, darken($silver, 20%));
+            border-color: $silver;
+        }
+        &--3 {
+            background: linear-gradient(135deg, $bronze, darken($bronze, 15%));
+            border-color: $bronze;
+        }
+    }
+
+    &__name {
+        font-size: 0.5rem;
+        font-weight: 700;
+        color: $text-300;
+        text-align: center;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__pts {
+        font-size: 0.5rem;
+        font-weight: 700;
+        color: $text-600;
+
+        &--gold { color: $gold; }
+    }
+
+    &__bar {
+        width: 100%;
+        border-radius: 3px 3px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6875rem;
+
+        &--1 {
+            height: 26px;
+            background: rgba($gold, 0.1);
+            border: 1px solid rgba($gold, 0.2);
+            border-bottom: none;
+        }
+        &--2 {
+            height: 18px;
+            background: rgba($silver, 0.07);
+            border: 1px solid rgba($silver, 0.15);
+            border-bottom: none;
+        }
+        &--3 {
+            height: 12px;
+            background: rgba($bronze, 0.07);
+            border: 1px solid rgba($bronze, 0.15);
+            border-bottom: none;
+        }
+    }
+}

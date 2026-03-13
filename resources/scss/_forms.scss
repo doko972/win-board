@@ -1,0 +1,103 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $text-300;
+    }
+
+    &__error {
+        font-size: 0.75rem;
+        color: $red;
+        margin-top: 4px;
+    }
+}
+
+.input {
+    width: 100%;
+    background: $bg-mid;
+    border: 1px solid $border-mid;
+    border-radius: $radius;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    color: $text-white;
+    transition: border-color $transition, box-shadow $transition;
+    outline: none;
+
+    &::placeholder { color: $text-600; }
+
+    &[rows] { resize: vertical; line-height: 1.5; }
+
+    &:focus {
+        border-color: $brand;
+        box-shadow: 0 0 0 3px rgba($brand, 0.15);
+    }
+
+    &--invalid {
+        border-color: $red;
+        &:focus { box-shadow: 0 0 0 3px rgba($red, 0.15); }
+    }
+}
+
+// Cartes de sélection de niveau
+.level-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.level-card {
+    cursor: pointer;
+
+    input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+
+    &__inner {
+        border: 2px solid $border-mid;
+        border-radius: $radius-lg;
+        padding: 20px 12px;
+        text-align: center;
+        background: $bg-mid;
+        transition: border-color $transition, background $transition, box-shadow $transition;
+
+        &:hover { border-color: rgba(255,255,255,0.2); }
+    }
+
+    &__emoji { font-size: 2rem; margin-bottom: 8px; }
+    &__name  { font-size: 0.875rem; font-weight: 700; margin-bottom: 4px; }
+    &__desc  { font-size: 0.75rem; color: $text-500; margin-bottom: 12px; }
+    &__pts   {
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: $text-white;
+        span { font-size: 0.75rem; font-weight: 400; color: $text-500; }
+    }
+
+    &--bronze &__name { color: $bronze; }
+    &--silver &__name { color: $silver; }
+    &--gold   &__name { color: $gold; }
+
+    &--bronze.is-selected &__inner {
+        border-color: $bronze;
+        background: rgba($bronze, 0.08);
+        box-shadow: 0 4px 20px rgba($bronze, 0.2);
+    }
+    &--silver.is-selected &__inner {
+        border-color: $silver;
+        background: rgba($silver, 0.08);
+        box-shadow: 0 4px 20px rgba($silver, 0.15);
+    }
+    &--gold.is-selected &__inner {
+        border-color: $gold;
+        background: rgba($gold, 0.08);
+        box-shadow: 0 4px 20px rgba($gold, 0.2);
+    }
+}

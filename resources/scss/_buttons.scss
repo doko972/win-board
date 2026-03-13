@@ -1,0 +1,48 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: $radius;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background $transition, transform $transition, box-shadow $transition;
+    border: none;
+    font-family: $font-sans;
+
+    &:active { transform: scale(0.97); }
+
+    &--primary {
+        background: $brand;
+        color: $text-white;
+        box-shadow: 0 4px 20px rgba($brand, 0.3);
+
+        &:hover { background: $brand-dim; }
+    }
+
+    &--outline {
+        background: transparent;
+        border: 1px solid $border-mid;
+        color: $text-300;
+
+        &:hover { background: rgba(255,255,255,0.05); color: $text-white; }
+    }
+
+    &--block {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+        font-size: 1rem;
+        border-radius: $radius-lg;
+    }
+
+    &--danger {
+        background: rgba($red, 0.1);
+        color: $red;
+        border: 1px solid rgba($red, 0.2);
+
+        &:hover { background: rgba($red, 0.2); }
+    }
+}

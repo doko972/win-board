@@ -1,0 +1,67 @@
+.card {
+    background: $bg-dark;
+    border: 1px solid $border;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    transition: border-color $transition;
+
+    &:hover { border-color: rgba($brand, 0.3); }
+
+    &__header {
+        padding: 16px 24px;
+        border-bottom: 1px solid $border;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h3, h2 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: $text-white;
+        }
+    }
+
+    &__link {
+        font-size: 0.75rem;
+        color: lighten($brand, 15%);
+        transition: color $transition;
+        &:hover { color: lighten($brand, 25%); }
+    }
+
+    &__body {
+        padding: 24px;
+    }
+
+    &__empty {
+        padding: 48px 24px;
+        text-align: center;
+
+        &-icon { font-size: 3rem; margin-bottom: 12px; }
+        &-text { color: $text-400; font-size: 0.875rem; }
+        &-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.8125rem;
+            color: lighten($brand, 15%);
+            transition: color $transition;
+            &:hover { color: lighten($brand, 25%); }
+        }
+    }
+}
+
+// Carte formulaire (section)
+.form-card {
+    background: $bg-dark;
+    border: 1px solid $border;
+    border-radius: $radius-xl;
+    padding: 24px;
+
+    &__title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $text-500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 20px;
+    }
+}
