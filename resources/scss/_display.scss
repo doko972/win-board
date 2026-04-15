@@ -114,9 +114,10 @@
         background: rgba(255,255,255,0.02);
         animation: slideUp 0.3s ease both;
 
-        &--new {
-            background: rgba($brand, 0.07);
-        }
+        &--new    { background: rgba($brand,  0.07); }
+        &--gold   { background: rgba($gold,   0.07); border-left: 2px solid rgba($gold,   0.4); padding-left: 6px; }
+        &--silver { background: rgba($silver, 0.06); border-left: 2px solid rgba($silver, 0.3); padding-left: 6px; }
+        &--bronze { background: rgba($bronze, 0.06); border-left: 2px solid rgba($bronze, 0.3); padding-left: 6px; }
     }
 
     &__feed-level {
@@ -132,10 +133,13 @@
     &__feed-client {
         font-size: 0.75rem;
         font-weight: 700;
-        color: $text-200;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        .display__feed-item--gold   & { color: $gold; }
+        .display__feed-item--silver & { color: $silver; }
+        .display__feed-item--bronze & { color: $bronze; }
     }
 
     &__feed-meta {
@@ -148,7 +152,10 @@
         font-size: 0.6875rem;
         font-weight: 900;
         flex-shrink: 0;
-        color: lighten($brand, 20%);
+
+        .display__feed-item--gold   & { color: $gold; }
+        .display__feed-item--silver & { color: $silver; }
+        .display__feed-item--bronze & { color: $bronze; }
     }
 
     // Rangée leaderboard grand écran

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class DisplayController extends Controller
@@ -87,7 +86,7 @@ class DisplayController extends Controller
     {
         return Appointment::with('user')
             ->latest()
-            ->take(20)
+            ->take(5)
             ->get()
             ->map(fn($a) => [
                 'id'           => $a->id,
