@@ -148,9 +148,9 @@
 
         {{-- Colonne stats --}}
         <div class="display__stats" id="stats-col"
-             data-bronze="{{ $stats['Découverte'] }}"
-             data-silver="{{ $stats['Qualifié'] }}"
-             data-gold="{{ $stats['Confirmé'] }}">
+             data-bronze="{{ $stats['bronze'] }}"
+             data-silver="{{ $stats['silver'] }}"
+             data-gold="{{ $stats['gold'] }}">
 
             {{-- Camembert --}}
             <div class="dstat__block">
