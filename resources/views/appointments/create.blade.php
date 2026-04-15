@@ -62,7 +62,7 @@
                         <input type="radio" name="level" value="bronze" {{ old('level') === 'bronze' ? 'checked' : '' }}>
                         <div class="level-card__inner">
                             <div class="level-card__emoji">🥉</div>
-                            <div class="level-card__name">Bronze</div>
+                            <div class="level-card__name">Découverte</div>
                             <div class="level-card__desc">Petit compte</div>
                             <div class="level-card__pts">+10 <span>pts</span></div>
                         </div>
@@ -73,7 +73,7 @@
                         <input type="radio" name="level" value="silver" {{ old('level') === 'silver' ? 'checked' : '' }}>
                         <div class="level-card__inner">
                             <div class="level-card__emoji">🥈</div>
-                            <div class="level-card__name">Silver</div>
+                            <div class="level-card__name">Qualifié</div>
                             <div class="level-card__desc">Compte moyen</div>
                             <div class="level-card__pts">+20 <span>pts</span></div>
                         </div>
@@ -84,7 +84,7 @@
                         <input type="radio" name="level" value="gold" {{ old('level') === 'gold' ? 'checked' : '' }}>
                         <div class="level-card__inner">
                             <div class="level-card__emoji">🥇</div>
-                            <div class="level-card__name">Gold</div>
+                            <div class="level-card__name">Confirmé</div>
                             <div class="level-card__desc">Grand compte</div>
                             <div class="level-card__pts">+30 <span>pts</span></div>
                         </div>

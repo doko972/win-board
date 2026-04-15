@@ -160,15 +160,15 @@
                     <div class="dstat__pie-legend">
                         <div class="dstat__pie-item dstat__pie-item--gold">
                             <span class="dstat__pie-dot"></span>
-                            <span id="pct-gold">{{ $stats['gold_pct'] }}%</span> Gold
+                            <span id="pct-gold">{{ $stats['gold_pct'] }}%</span> Confirmé
                         </div>
                         <div class="dstat__pie-item dstat__pie-item--silver">
                             <span class="dstat__pie-dot"></span>
-                            <span id="pct-silver">{{ $stats['silver_pct'] }}%</span> Silver
+                            <span id="pct-silver">{{ $stats['silver_pct'] }}%</span> Qualifié
                         </div>
                         <div class="dstat__pie-item dstat__pie-item--bronze">
                             <span class="dstat__pie-dot"></span>
-                            <span id="pct-bronze">{{ $stats['bronze_pct'] }}%</span> Bronze
+                            <span id="pct-bronze">{{ $stats['bronze_pct'] }}%</span> Découverte
                         </div>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                     </div>
                     <div class="dstat__kpi">
                         <div class="dstat__kpi-value dstat__kpi-value--gold" id="gold-pct-kpi">{{ $stats['gold_pct'] }}%</div>
-                        <div class="dstat__kpi-label">taux gold</div>
+                        <div class="dstat__kpi-label">taux confirmé</div>
                     </div>
                 </div>
             </div>
