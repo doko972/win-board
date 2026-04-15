@@ -4,10 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class DisplayController extends Controller
 {
+    // ---------------------------------------------------------------
+    // Accès kiosque Raspberry Pi — vérifie le token avant d'afficher
+    // ---------------------------------------------------------------
+
+    public function kiosk(string $token)
+    {
+        abort_unless(
+            hash_equals(config('services.display_token'), $token),
+            403,
+            'Token invalide.'
+        );
+
+        return $this->index();
+    }
+
+    public function kioskLatest(string $token)
+    {
+        abort_unless(
+            hash_equals(config('services.display_token'), $token),
+            403,
+            'Token invalide.'
+        );
+
+        return $this->latest();
+    }
+
+    // ---------------------------------------------------------------
+
     public function index()
     {
         $leaderboard  = $this->getLeaderboard();

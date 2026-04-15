@@ -35,6 +35,8 @@ return [
         ],
     ],
 
+    'display_token' => env('DISPLAY_TOKEN', ''),
+
     'google' => [
         'calendar_embed_url'       => env('GOOGLE_CALENDAR_EMBED_URL'),
         'calendar_id'              => env('GOOGLE_CALENDAR_ID'),

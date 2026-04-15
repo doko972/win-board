@@ -14,6 +14,10 @@ Route::get('/', function () {
 Route::get('/display', [DisplayController::class, 'index'])->name('display');
 Route::get('/display/latest', [DisplayController::class, 'latest'])->name('display.latest');
 
+// Accès kiosque Raspberry Pi — protégé par token, sans authentification
+Route::get('/tv/{token}', [DisplayController::class, 'kiosk'])->name('display.kiosk');
+Route::get('/tv/{token}/latest', [DisplayController::class, 'kioskLatest'])->name('display.kiosk.latest');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
