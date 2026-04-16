@@ -6,10 +6,18 @@
                class="navbar__link {{ request()->routeIs('dashboard') ? 'navbar__link--active' : '' }}">
                 🏆 Classement
             </a>
+            @if(!auth()->user()->isAdmin())
             <a href="{{ route('appointments.create') }}"
                class="navbar__link {{ request()->routeIs('appointments.create') ? 'navbar__link--active' : '' }}">
                 🎯 Déclarer un RDV
             </a>
+            @endif
+            @if(auth()->user()->isAdmin())
+            <a href="{{ route('admin.dashboard') }}"
+               class="navbar__link navbar__link--admin {{ request()->routeIs('admin.*') ? 'navbar__link--active' : '' }}">
+                ⚙️ Administration
+            </a>
+            @endif
         </div>
     </div>
 

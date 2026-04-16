@@ -1,0 +1,401 @@
+// ─── Pages administration ─────────────────────────────────
+
+.admin {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-bottom: 24px;
+
+        @media (max-width: 900px) { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 600px) { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+
+        @media (max-width: 700px) { grid-template-columns: 1fr; }
+    }
+
+    &__pagination {
+        padding: 16px;
+        border-top: 1px solid $border;
+    }
+}
+
+// ── Stat card (ligne du haut) ──────────────────────────────
+.admin-stat {
+    background: $bg-dark;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 16px;
+    text-align: center;
+
+    &__value {
+        font-size: 1.75rem;
+        font-weight: 900;
+        color: lighten($brand, 15%);
+        line-height: 1;
+    }
+
+    &__label {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: $text-600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 6px;
+    }
+}
+
+// ── Leader card ───────────────────────────────────────────
+.admin-leader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+
+    &__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $gold, darken($gold, 15%));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: 900;
+        color: $bg-deep;
+        flex-shrink: 0;
+    }
+
+    &__name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: $text-white;
+    }
+
+    &__pts {
+        font-size: 0.875rem;
+        color: $gold;
+        font-weight: 600;
+        margin-top: 2px;
+    }
+}
+
+// ── Raccourcis admin ──────────────────────────────────────
+.admin-shortcuts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+// ── Tableau admin ─────────────────────────────────────────
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        text-align: left;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        color: $text-600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 10px 16px;
+        border-bottom: 1px solid $border;
+    }
+
+    td {
+        padding: 12px 16px;
+        font-size: 0.875rem;
+        color: $text-300;
+        border-bottom: 1px solid $border;
+        vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    &__muted { color: $text-600 !important; font-size: 0.8125rem !important; }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    &__action {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: lighten($brand, 15%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: $radius-sm;
+        transition: background $transition, color $transition;
+        text-decoration: none;
+
+        &:hover { background: rgba($brand, 0.12); color: $text-white; }
+
+        &--danger {
+            color: $red;
+            &:hover { background: rgba($red, 0.12); color: $red; }
+        }
+    }
+}
+
+// ── Badge de niveau / rôle ────────────────────────────────
+.admin-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.07);
+    color: $text-300;
+
+    &--gold    { background: rgba($gold,   0.12); color: $gold;   }
+    &--silver  { background: rgba($silver, 0.12); color: $silver; }
+    &--bronze  { background: rgba($bronze, 0.12); color: $bronze; }
+    &--admin      { background: rgba($brand,  0.12); color: lighten($brand, 15%); }
+    &--commercial { background: rgba(255,255,255,0.06); color: $text-400; }
+}
+
+// ── User avatar dans tableau ──────────────────────────────
+.admin-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $brand, $purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.625rem;
+        font-weight: 900;
+        color: $text-white;
+        flex-shrink: 0;
+
+        &--admin { background: linear-gradient(135deg, $gold, darken($gold, 15%)); }
+    }
+}
+
+// ── Lien "admin" navbar ───────────────────────────────────
+.navbar__link--admin {
+    color: lighten($brand, 15%) !important;
+}
+
+// ── Page header back link ─────────────────────────────────
+.page-header__back {
+    font-size: 0.8125rem;
+    color: $text-600;
+    text-decoration: none;
+    transition: color $transition;
+    margin-right: 12px;
+
+    &:hover { color: $text-400; }
+}
+
+// ── Sous-navigation admin ─────────────────────────────────
+.admin-subnav {
+    display: flex;
+    gap: 4px;
+    padding: 8px 24px;
+    background: $bg-dark;
+    border-bottom: 1px solid $border;
+    overflow-x: auto;
+
+    &__link {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: $text-600;
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: $radius-sm;
+        white-space: nowrap;
+        transition: color $transition, background $transition;
+
+        &:hover { color: $text-300; background: rgba(255,255,255,.04); }
+        &--active { color: $text-white; background: rgba($brand, .15); }
+    }
+}
+
+// ── URL Kiosque ───────────────────────────────────────────
+.admin-kiosk {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-deep;
+    border: 1px solid $border;
+    border-radius: $radius;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+
+    &__url {
+        font-family: monospace;
+        font-size: 0.8125rem;
+        color: $emerald;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__copy { flex-shrink: 0; }
+
+    &__hint {
+        font-size: 0.75rem;
+        color: $text-600;
+        margin: 0;
+    }
+}
+
+// ── Filtres RDV ───────────────────────────────────────────
+.admin-filters {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    align-items: end;
+    padding: 4px;
+
+    @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 500px) { grid-template-columns: 1fr; }
+}
+
+// ── Reset blocks ──────────────────────────────────────────
+.admin-reset-block {
+    padding: 20px;
+    border-bottom: 1px solid $border;
+
+    &:last-child { border-bottom: none; }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+    }
+
+    &__label {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $text-white;
+    }
+
+    &__meta {
+        font-size: 0.75rem;
+        color: $text-600;
+    }
+}
+
+// ── Checkbox admin ────────────────────────────────────────
+.admin-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: $text-300;
+
+    input[type="checkbox"] { accent-color: $brand; width: 16px; height: 16px; }
+}
+
+// ── Info list ─────────────────────────────────────────────
+.admin-info-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    li {
+        font-size: 0.875rem;
+        color: $text-400;
+        strong { color: $text-white; }
+    }
+}
+
+// ── Badge header ──────────────────────────────────────────
+.admin-badge-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+
+    &__icon { font-size: 1.75rem; flex-shrink: 0; }
+    &__name { font-size: 1rem; font-weight: 700; color: $text-white; }
+    &__desc { font-size: 0.8125rem; color: $text-600; margin-top: 2px; }
+}
+
+.admin-badge-holders {
+    padding: 0 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.admin-badge-holder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    border-radius: $radius-sm;
+    font-size: 0.875rem;
+    color: $text-300;
+
+    &:hover { background: rgba(255,255,255,.02); }
+}
+
+// ── Award form ────────────────────────────────────────────
+.admin-award-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
+    padding: 4px;
+
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+// ── Profil commercial ─────────────────────────────────────
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0 16px;
+}
+
+// ── card__link ────────────────────────────────────────────
+.card__link {
+    font-size: 0.8125rem;
+    color: $text-600;
+    text-decoration: none;
+    transition: color $transition;
+    &:hover { color: $text-400; }
+}
+
+// ── Alert danger ──────────────────────────────────────────
+.alert--danger {
+    background: rgba($red, 0.1);
+    border: 1px solid rgba($red, 0.25);
+    color: $red;
+    border-radius: $radius;
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    margin-bottom: 16px;
+}
