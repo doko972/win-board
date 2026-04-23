@@ -16,6 +16,45 @@ class AppointmentController extends Controller
         return view('appointments.create');
     }
 
+    public function edit(Appointment $appointment)
+    {
+        abort_if($appointment->user_id !== Auth::id(), 403);
+
+        return view('appointments.edit', compact('appointment'));
+    }
+
+    public function update(Request $request, Appointment $appointment)
+    {
+        abort_if($appointment->user_id !== Auth::id(), 403);
+
+        $validated = $request->validate([
+            'title'        => 'required|string|max:255',
+            'client_name'  => 'required|string|max:255',
+            'description'  => 'nullable|string|max:1000',
+            'level'        => 'required|in:bronze,silver,gold',
+            'scheduled_at' => 'required|date',
+        ]);
+
+        $newPoints = Appointment::pointsForLevel($validated['level']);
+        $oldPoints = $appointment->points_value;
+
+        if ($newPoints !== $oldPoints) {
+            Auth::user()->increment('points', $newPoints - $oldPoints);
+        }
+
+        $appointment->update([
+            'title'        => $validated['title'],
+            'client_name'  => $validated['client_name'],
+            'description'  => $validated['description'] ?? null,
+            'level'        => $validated['level'],
+            'points_value' => $newPoints,
+            'scheduled_at' => $validated['scheduled_at'],
+        ]);
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Rendez-vous mis à jour.');
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

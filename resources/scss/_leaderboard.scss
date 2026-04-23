@@ -143,4 +143,18 @@
         }
         &-label { font-size: 0.6875rem; color: $text-600; }
     }
+
+    &__edit {
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        opacity: 0;
+        transition: opacity $transition;
+        text-decoration: none;
+        padding: 4px 6px;
+        border-radius: $radius-sm;
+
+        &:hover { background: rgba(255,255,255,0.06); }
+    }
+
+    &:hover &__edit { opacity: 1; }
 }

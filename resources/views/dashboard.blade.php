@@ -137,6 +137,7 @@
                                 </div>
                                 <div class="appt-row__pts-label">pts</div>
                             </div>
+                            <a href="{{ route('appointments.edit', $appt) }}" class="appt-row__edit">✏️</a>
                         </div>
                     @empty
                         <div class="card__empty">
