@@ -51,12 +51,14 @@ class GoogleCalendarService
         try {
             $end = (clone \DateTime::createFromInterface($start))->modify("+{$durationMinutes} minutes");
 
+            $tz = config('app.timezone');
+
             $event = new Event([
                 'summary'     => $title,
                 'description' => $description,
                 'colorId'     => self::LEVEL_COLOR[$level] ?? '7',
-                'start'       => new EventDateTime(['dateTime' => $start->format(\DateTime::RFC3339), 'timeZone' => config('app.timezone')]),
-                'end'         => new EventDateTime(['dateTime' => $end->format(\DateTime::RFC3339),   'timeZone' => config('app.timezone')]),
+                'start'       => new EventDateTime(['dateTime' => $start->format('Y-m-d\TH:i:s'), 'timeZone' => $tz]),
+                'end'         => new EventDateTime(['dateTime' => $end->format('Y-m-d\TH:i:s'),   'timeZone' => $tz]),
             ]);
 
             $created = $this->client()->events->insert($calendarId, $event);
