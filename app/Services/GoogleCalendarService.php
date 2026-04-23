@@ -49,16 +49,21 @@ class GoogleCalendarService
         }
 
         try {
-            $end = (clone \DateTime::createFromInterface($start))->modify("+{$durationMinutes} minutes");
+            $parisTz    = new \DateTimeZone('Europe/Paris');
+            $startParis = (clone \DateTime::createFromInterface($start))->setTimezone($parisTz);
+            $endParis   = (clone $startParis)->modify("+{$durationMinutes} minutes");
 
-            $tz = config('app.timezone');
+            Log::debug('GoogleCalendar createEvent', [
+                'start' => $startParis->format('c'),
+                'end'   => $endParis->format('c'),
+            ]);
 
             $event = new Event([
                 'summary'     => $title,
                 'description' => $description,
                 'colorId'     => self::LEVEL_COLOR[$level] ?? '7',
-                'start'       => new EventDateTime(['dateTime' => $start->format('Y-m-d\TH:i:s'), 'timeZone' => $tz]),
-                'end'         => new EventDateTime(['dateTime' => $end->format('Y-m-d\TH:i:s'),   'timeZone' => $tz]),
+                'start'       => new EventDateTime(['dateTime' => $startParis->format('c'), 'timeZone' => 'Europe/Paris']),
+                'end'         => new EventDateTime(['dateTime' => $endParis->format('c'),   'timeZone' => 'Europe/Paris']),
             ]);
 
             $created = $this->client()->events->insert($calendarId, $event);
