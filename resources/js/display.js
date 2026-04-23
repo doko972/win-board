@@ -140,7 +140,7 @@ function launchConfetti() {
 const LEVEL_CFG = {
     bronze: { emoji: '🥉', label: '🥉 Découverte', cls: 'popup__level--bronze', ptsCls: 'popup__points--brand' },
     silver: { emoji: '🥈', label: '🥈 Qualifié',   cls: 'popup__level--silver', ptsCls: 'popup__points--brand' },
-    gold:   { emoji: '🔥', label: '🥇 Pret à signer',   cls: 'popup__level--gold',   ptsCls: 'popup__points--gold'  },
+    gold:   { emoji: '🔥', label: '🥇 Pret à signerù',   cls: 'popup__level--gold',   ptsCls: 'popup__points--gold'  },
 };
 
 let popupTimeout = null;
