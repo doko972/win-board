@@ -30,7 +30,7 @@
                         <x-input-label for="client_name" value="Nom du client / entreprise" />
                         <x-text-input id="client_name" name="client_name" type="text"
                             placeholder="Ex: Société Dupont SARL"
-                            :value="old('client_name')" required />
+                            :value="old('client_name')" />
                         <x-input-error :messages="$errors->get('client_name')" />
                     </div>
 

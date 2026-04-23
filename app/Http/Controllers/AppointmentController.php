@@ -91,7 +91,7 @@ class AppointmentController extends Controller
         $googleEventId = app(GoogleCalendarService::class)->createEvent(
             title:           $validated['title'] . " — " . $validated['client_name'],
             description:     $calendarDescription,
-            start:           new \DateTime($validated['scheduled_at']),
+            start:           new \DateTime($validated['scheduled_at'], new \DateTimeZone('Europe/Paris')),
             durationMinutes: 60,
             level:           $validated['level'],
         );
@@ -101,7 +101,11 @@ class AppointmentController extends Controller
         }
 
         $appointment->load('user');
-        broadcast(new AppointmentDeclared($appointment));
+        try {
+            broadcast(new AppointmentDeclared($appointment));
+        } catch (\Exception $e) {
+            // Reverb indisponible — le RDV est enregistré, la diffusion temps réel est ignorée
+        }
 
         return redirect()->route('dashboard')
             ->with('success', "RDV déclaré ! +" . $points . " points 🎉");
